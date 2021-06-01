@@ -8,6 +8,7 @@
 
 
     <LinearLayout
+        android:paddingLeft="10dp"
         android:layout_width="400dp"
         android:layout_height="5000dp"
         android:orientation="vertical">
@@ -33,20 +34,21 @@
             android:layout_width="500dp"
             android:layout_height="500dp"
             android:layout_gravity="center"
-            android:src="@drawable/standlemonade" />
+            android:src="@drawable/standlemonade"
+            android:paddingBottom="10dp"/>
 
 
         <Button
-            android:layout_width="200dp"
-            android:layout_height="75dp"
-            android:onClick="Click"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:onClick="Info"
             android:text="Contact Information" />
 
         <Button
-            android:layout_width="200dp"
-            android:layout_height="75dp"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
             android:layout_gravity="right"
-            android:onClick="Click"
+            android:onClick="pageMenu"
             android:text="Page Menu" />
 
 
