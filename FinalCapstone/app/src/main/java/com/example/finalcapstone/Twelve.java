@@ -56,6 +56,14 @@ public class Twelve extends AppCompatActivity {
         boolean hasChocolate = chocolate.isChecked();
         Log.v("MainActivity","Has chocolate: " + hasChocolate);
 
+        CheckBox strawCheckBox = findViewById(R.id.straw);
+        boolean hasStraw = strawCheckBox.isChecked();
+        Log.v("MainActivity","Added napkins: " + hasStraw);
+
+        CheckBox napkinsCheckBox = findViewById(R.id.napkins);
+        boolean hasNapkins = napkinsCheckBox.isChecked();
+        Log.v("MainActivity","Added napkins: " + hasNapkins);
+
         // Get text from EditText to Html
         EditText nameField = findViewById(R.id.user_input_name_view);
         String name = nameField.getText().toString();
@@ -84,7 +92,7 @@ public class Twelve extends AppCompatActivity {
      */
 
     private int calculatePrice(boolean hasWhippedCream, boolean hasChocolate){
-        int basePrice = 5;
+        int basePrice = 3;
 
         //adds 1$ if they want whipped cream
         if (hasWhippedCream) {
@@ -92,7 +100,7 @@ public class Twelve extends AppCompatActivity {
         }
         //adds 2$ if they want chocolate
         if (hasChocolate){
-            basePrice = basePrice +2;
+            basePrice = basePrice + 1;
         }
         //calculate the total order price by multiplying the quantity
         return quantity * basePrice;

@@ -56,18 +56,27 @@ public class SixTwo extends AppCompatActivity {
         boolean hasChocolate = chocolate.isChecked();
         Log.v("MainActivity","Has chocolate: " + hasChocolate);
 
+        CheckBox strawCheckBox = findViewById(R.id.straw);
+        boolean hasStraw = strawCheckBox.isChecked();
+        Log.v("MainActivity","Added napkins: " + hasStraw);
+
+        CheckBox napkinsCheckBox = findViewById(R.id.napkins);
+        boolean hasNapkins = napkinsCheckBox.isChecked();
+        Log.v("MainActivity","Added napkins: " + hasNapkins);
+
         // Get text from EditText to Html
         EditText nameField = findViewById(R.id.user_input_name_view);
         String name = nameField.getText().toString();
         Log.v("MainActivity","Name: "+ name);
 
-        int price = calculatePrice(hasWhippedCream,hasChocolate);
-        String priceMessage =  createOrderSummary(price, hasWhippedCream, hasChocolate, name);
+        int price = calculatePrice(hasWhippedCream,hasChocolate,hasStraw,hasNapkins);
+        String priceMessage =  createOrderSummary(price, hasWhippedCream, hasChocolate, name, hasNapkins, hasStraw);
 
-        Intent intent = new Intent(Intent.ACTION_SENDTO);
-        intent.setData(Uri.parse("mailto: \"calenzinger@icloud.com\"?subject="+ Uri.encode("Just Java order for "+ name) + "&body=" + Uri.encode(priceMessage))); // only email apps should handle this
-        if (intent.resolveActivity(getPackageManager()) != null) {
-            startActivity(intent);
+        Intent email = new Intent(Intent.ACTION_SENDTO);
+        email.setData(Uri.parse("mailto: \"calenzinger@icloud.com\"?subject="+ Uri.encode("Just Java order for "+ name) + "&body=" + Uri.encode(priceMessage))); // only email apps should handle this
+        if (email.resolveActivity(getPackageManager()) != null) {
+            startActivity(email);
+
         }
 
         displayMessage(priceMessage);
@@ -83,8 +92,15 @@ public class SixTwo extends AppCompatActivity {
      * @return total price
      */
 
-    private int calculatePrice(boolean hasWhippedCream, boolean hasChocolate){
-        int basePrice = 5;
+    private int calculatePrice(boolean hasWhippedCream, boolean hasChocolate, boolean hasStraw, boolean hasNapkins){
+        int basePrice = 3;
+
+        if (hasStraw) {
+            basePrice = basePrice + 0;
+        }
+        if (hasNapkins) {
+            basePrice = basePrice + 1;
+        }
 
         //adds 1$ if they want whipped cream
         if (hasWhippedCream) {
@@ -92,7 +108,7 @@ public class SixTwo extends AppCompatActivity {
         }
         //adds 2$ if they want chocolate
         if (hasChocolate){
-            basePrice = basePrice +2;
+            basePrice = basePrice + 1;
         }
         //calculate the total order price by multiplying the quantity
         return quantity * basePrice;
@@ -108,11 +124,13 @@ public class SixTwo extends AppCompatActivity {
      * @return returns
      */
 
-    private String createOrderSummary(int price, boolean addWhippedCream, boolean chocolate, String name) {
+    private String createOrderSummary(int price, boolean addWhippedCream, boolean chocolate, String name, boolean hasStraw, boolean hasNapkins) {
         String priceMessage = "Name: "+ name;
         priceMessage += "\nThank you for ordering " + quantity + " Lemonades!";
         priceMessage += "\nAdd Lemon? " + addWhippedCream;
         priceMessage += "\nAdd Ice? " + chocolate;//I used the escape key \n to put info on a new line
+        priceMessage += "\nAdd a Straw? " + hasStraw;
+        priceMessage += "\nAdd Napkins? " + hasNapkins;
         priceMessage += "\nAmount Due: $" + price; //I used the escape key \n to put info on a new line
         priceMessage += "\n\nYour order will be right up!"; //Double \n escape key for w line separation
         return priceMessage;

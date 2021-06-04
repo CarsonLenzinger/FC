@@ -6,8 +6,9 @@
     android:layout_height="match_parent"
     tools:context=".PageMenu"
     android:orientation="vertical"
-    android:paddingLeft="10dp"
-    android:paddingBottom="90dp">
+    android:paddingLeft="115dp"
+    android:layout_gravity="center"
+    android:paddingBottom="100dp">
 
 
 
@@ -18,8 +19,11 @@
             android:textSize="25dp"
             android:textStyle="bold"
             android:textColor="@color/black"
-            android:layout_gravity="center"
-            android:paddingLeft="-10dp"/>
+            android:paddingLeft="15dp"/>
+
+    <TextView
+        android:layout_width="25dp"
+        android:layout_height="25dp"/>
 
 
     <Button
@@ -27,7 +31,14 @@
         android:layout_height="wrap_content"
         android:onClick="threeFour"
         android:textSize="20dp"
-        android:text="34th Street" />
+        android:text="34th Street"
+        android:includeFontPadding="true"
+        />
+
+    <TextView
+        android:layout_width="25dp"
+        android:layout_height="25dp"/>
+
 
     <Button
         android:layout_width="wrap_content"
@@ -35,6 +46,10 @@
         android:onClick="sixTwo"
         android:textSize="20dp"
         android:text="62nd Street" />
+
+    <TextView
+        android:layout_width="25dp"
+        android:layout_height="25dp"/>
 
     <Button
         android:layout_width="wrap_content"
