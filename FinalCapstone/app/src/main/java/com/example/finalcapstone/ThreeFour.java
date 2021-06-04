@@ -69,8 +69,8 @@ public class ThreeFour extends AppCompatActivity {
         String name = nameField.getText().toString();
         Log.v("MainActivity","Name: "+ name);
 
-        int price = calculatePrice(hasWhippedCream,hasChocolate);
-        String priceMessage =  createOrderSummary(price, hasWhippedCream, hasChocolate, name);
+        int price = calculatePrice(hasWhippedCream,hasChocolate,hasNapkins,hasStraw);
+        String priceMessage =  createOrderSummary(price, hasWhippedCream, hasChocolate, name, hasNapkins, hasStraw);
 
         Intent intent = new Intent(Intent.ACTION_SENDTO);
         intent.setData(Uri.parse("mailto: \"calenzinger@icloud.com\"?subject="+ Uri.encode("Just Java order for "+ name) + "&body=" + Uri.encode(priceMessage))); // only email apps should handle this
@@ -91,8 +91,15 @@ public class ThreeFour extends AppCompatActivity {
      * @return total price
      */
 
-    private int calculatePrice(boolean hasWhippedCream, boolean hasChocolate){
+    private int calculatePrice(boolean hasWhippedCream, boolean hasChocolate, boolean hasStraw, boolean hasNapkins){
         int basePrice = 3;
+
+        if (hasStraw) {
+            basePrice = basePrice + 0;
+        }
+        if (hasNapkins) {
+            basePrice = basePrice + 0;
+        }
 
         //adds 1$ if they want whipped cream
         if (hasWhippedCream) {
@@ -116,11 +123,13 @@ public class ThreeFour extends AppCompatActivity {
      * @return returns
      */
 
-    private String createOrderSummary(int price, boolean addWhippedCream, boolean chocolate, String name) {
+    private String createOrderSummary(int price, boolean addWhippedCream, boolean chocolate, String name, boolean hasStraw, boolean hasNapkins) {
         String priceMessage = "Name: "+ name;
         priceMessage += "\nThank you for ordering " + quantity + " Lemonades!";
         priceMessage += "\nAdd Lemon? " + addWhippedCream;
         priceMessage += "\nAdd Ice? " + chocolate;//I used the escape key \n to put info on a new line
+        priceMessage += "\nAdd a Straw? " + hasStraw;
+        priceMessage += "\nAdd Napkins? " + hasNapkins;
         priceMessage += "\nAmount Due: $" + price; //I used the escape key \n to put info on a new line
         priceMessage += "\n\nYour order will be right up!"; //Double \n escape key for w line separation
         return priceMessage;

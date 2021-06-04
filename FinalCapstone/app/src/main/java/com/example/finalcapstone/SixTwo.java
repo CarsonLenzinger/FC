@@ -99,7 +99,7 @@ public class SixTwo extends AppCompatActivity {
             basePrice = basePrice + 0;
         }
         if (hasNapkins) {
-            basePrice = basePrice + 1;
+            basePrice = basePrice + 0;
         }
 
         //adds 1$ if they want whipped cream
