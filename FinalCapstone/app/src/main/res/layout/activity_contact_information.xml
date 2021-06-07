@@ -53,6 +53,13 @@
         android:paddingLeft="10dp"/>
 
 
+    <ImageView
+        android:layout_width="400dp"
+        android:layout_height="400dp"
+        android:src="@drawable/map"
+        />
+
+
 
 
 

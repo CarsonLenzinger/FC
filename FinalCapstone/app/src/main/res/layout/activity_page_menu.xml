@@ -59,11 +59,12 @@
         android:text="12th Street" />
 
 
-
-
-
-
-
+    <ImageView
+        android:layout_width="800dp"
+        android:layout_height="400dp"
+        android:paddingRight="600dp"
+        android:src="@drawable/map" />
 
 
 </LinearLayout>
+
