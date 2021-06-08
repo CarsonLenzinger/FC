@@ -16,8 +16,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="  Page Menu"
-            android:textSize="25dp"
+            android:textSize="30dp"
             android:textStyle="bold"
+            android:fontFamily="cursive"
             android:textColor="@color/black"
             android:paddingLeft="15dp"/>
 
